@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pessoas>
+  <pessoa>	
+	<nome>Preston Shavers</nome>
+	<sexo>M</sexo>
+	<email>prestonshavers@bauhaus.com</email>
+	<endereco>Silver jones, Macbert,  N°1320</endereco>
+  </pessoa>
+  <pessoa>	
+	<nome>Jone Ceaser</nome>
+	<sexo>M</sexo>
+	<email>joneceaser@ragnarok.com</email>
+	<endereco>Rua Jake jow, 1264</endereco>
+  </pessoa>  
+  <pessoa>	
+	<nome>Kaiara Silva</nome>
+	<sexo>F</sexo>
+	<email>Kaiarasilva@jourrapide.com</email>
+	<endereco>Praça Melo Paca, 1783</endereco>
+  </pessoa>    
+</pessoas>

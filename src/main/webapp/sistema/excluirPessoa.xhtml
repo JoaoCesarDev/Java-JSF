@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+ 
+    <h:form>
+       
+        <div style="float:left;padding-top: 35px;padding-left:17px">
+            <div style="float:left;margin-right: 35px"> 
+        <p:commandButton style="width:100px;"
+                         value="sim" 
+	            	 id="commandButton-excluir"
+			 icon="ui-icon-gear"
+                         actionListener="#{consultarPessoaController.ExcluirPessoa}"							 
+			 oncomplete="PF('dialog-modal-excluir').hide();"
+                         update="form-consulta"/>
+        </div> 
+       
+        
+        <div style="float:left;"> 
+        <p:commandButton style="width:100px;"
+                         value="Não"
+                         id="commandButton-Nao"
+                         oncomplete="PF('dialog-modal-excluir').hide();"/>
+          
+       </div> 
+        </div>
+            
+    </h:form>
+    </ui:composition>

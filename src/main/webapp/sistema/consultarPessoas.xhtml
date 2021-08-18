@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+        xmlns:format="http://joaocesar.com.br/LocalDateTimeConverter">
+ 
+<h:head>
+</h:head>
+ 
+<ui:composition template="/template/layoutBase.xhtml">
+ 
+	<ui:define name="container">
+            <p:dialog header="Editar Cadastro de Pessoas"
+                      id="dialog-modal-editar"
+                      widgetVar="dialog-modal-editar"
+                      modal="true"
+                      height="400px"
+                      width="500px">
+                      <ui:include src="/sistema/editarPessoa.xhtml"/>
+            </p:dialog>
+            <p:dialog header="Excluir Registro"
+                      id="dialog-modal-excluir"
+                      widgetVar="dialog-modal-excluir"
+                      modal="true"
+                      height="100px"
+                      width="300px">
+                      <ui:include src="/sistema/excluirPessoa.xhtml"/>
+            </p:dialog>
+		<h:form style="margin:auto;margin-left:2%;padding-top: 10%" id="form-consulta">
+ 
+			<p:dataTable id="dataTable-registros"
+                                     widgetVar="dataTable-registros"
+						 var="pessoa" 
+						 value="#{consultarPessoaController.pessoas}" 
+						 rows="15"
+						 paginator="true"
+						 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15"
+                         style="width:100%;text-align: center">
+ 
+						 <p:column headerText="Código" style="width:60px;">
+            				<h:outputText value="#{pessoa.codigo}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Nome" style="width:200px;">
+            				<h:outputText value="#{pessoa.nome}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Sexo" style="width:80px;">
+            				<h:outputText value="#{pessoa.sexo}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Cadastro" style="width:180px;">
+            				<h:outputText value="#{pessoa.dataCadastro}">            					
+                                            <format:LocalDateTimeConverter pattern="dd/MM/yyyy HH:mm:ss"/>
+            				</h:outputText>
+        				 </p:column>
+ 
+        				 <p:column headerText="Email" style="width:200px;">
+            				<h:outputText value="#{pessoa.email}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Endereço" style="width:180px;">
+            				<h:outputText value="#{pessoa.endereco}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Origem" style="width:63px;">
+            				<h:outputText value="#{pessoa.origemCadastro}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Usuário" style="width:53px;">
+                                             <h:outputText value="#{pessoa.users.username}" />
+        				 </p:column>
+ 
+        				 <p:column headerText="Editar" style="width:35px;">
+                                             <p:commandButton icon="ui-icon-pencil" 
+                                                                    title="Editar Registro"                        					 
+                        					    ajax="true"                        					 
+                        					    actionListener="#{consultarPessoaController.Editar(pessoa)}"
+                        					    oncomplete="PF('dialog-modal-editar').show();" 
+                        					    update="dialog-modal-editar"/>
+        				 </p:column>
+                                     
+        				 <p:column headerText="Excluir" style="width:25px;">
+                                             <p:commandButton icon="ui-icon-trash"
+                                                             value="Excluir"
+                                                             ajax="true"
+                                                             actionListener="#{consultarPessoaController.Excluir(pessoa)}"
+                                                             oncomplete="PF('dialog-modal-excluir').show();"
+                                                             update="dialog-modal-excluir">
+                                              
+                                             </p:commandButton>
+                                          
+        				 </p:column>
+ 
+			</p:dataTable>
+                                        
+		</h:form>
+                 
+	</ui:define>
+ 
+</ui:composition>
+</html>
